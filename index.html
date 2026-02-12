@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch Me If You Can!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      position: absolute;
+      padding: 20px 50px 20px 40px; /* extra space for the sticker */
+      font-size: 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(45deg, #ff0055, #ff9900);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .sticker {
+      margin-left: 10px;
+      font-size: 28px; /* bigger emoji sticker */
+    }
+  </style>
+</head>
+<body>
+  <button id="funButton">
+    Catch Me!
+    <span class="sticker">🌈</span>
+  </button>
+
+  <script>
+    const button = document.getElementById('funButton');
+
+    // Function to move button to a random position
+    function moveButton() {
+      const bodyWidth = window.innerWidth;
+      const bodyHeight = window.innerHeight;
+
+      const buttonWidth = button.offsetWidth;
+      const buttonHeight = button.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * (bodyWidth - buttonWidth));
+      const randomY = Math.floor(Math.random() * (bodyHeight - buttonHeight));
+
+      button.style.left = randomX + 'px';
+      button.style.top = randomY + 'px';
+    }
+
+    // Move button when cursor gets close
+    button.addEventListener('mouseenter', moveButton);
+
+    // Change text when clicked
+    button.addEventListener('click', () => {
+      button.innerHTML = "You're Gay! <span class='sticker'>🌈</span>";
+    });
+
+    // Start at a random location
+    moveButton();
+  </script>
+</body>
+</html>
